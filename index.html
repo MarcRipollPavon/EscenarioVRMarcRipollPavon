@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Escena VR</title>
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+
+<a-scene>
+
+<a-sky color="black"></a-sky>
+
+<a-assets>
+  <a-asset-item id="modeloNormal" src="modelo1.glb"></a-asset-item>
+  <a-asset-item id="modeloGirando" src="modelo2.glb"></a-asset-item>
+  <a-asset-item id="modeloGirando1" src="hotdog.glb"></a-asset-item>
+  <a-asset-item id="modeloGirando2" src="hamburguesa.glb"></a-asset-item>
+  <a-asset-item id="modeloGirando3" src="helado.glb"></a-asset-item>
+  <a-asset-item id="modeloGirando4" src="patatas.glb"></a-asset-item>
+</a-assets>
+
+<!-- Modelo central -->
+<a-entity
+  gltf-model="#modeloGirando"
+  position="0 -4 0"
+  scale="18 18 18"
+  animation="property: rotation; to: 0 360 0; loop: true; dur: 150000; easing: linear">
+</a-entity>
+
+<!-- Órbita 1 -->
+<a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear">
+  <a-entity gltf-model="#modeloGirando1"
+            position="0 0 -150"
+            scale="20 20 20"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+  </a-entity>
+</a-entity>
+
+<!-- Órbita 2 -->
+<a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear">
+  <a-entity gltf-model="#modeloGirando2"
+            position="180 0 0"
+            scale="10 10 10"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear">
+  </a-entity>
+</a-entity>
+
+<!-- Órbita 3 - Helado -->
+<a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear">
+  <a-entity gltf-model="#modeloGirando3"
+            position="0 0 220"
+            scale="50 50 50"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+  </a-entity>
+</a-entity>
+
+<!-- Órbita 4 - Patatas (lado opuesto de la misma órbita) -->
+<a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear">
+  <a-entity gltf-model="#modeloGirando4"
+            position="0 0 -220"
+            scale="100 100 100"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 14000; easing: linear">
+  </a-entity>
+</a-entity>
+
+<!-- Cámara -->
+<a-entity position="0 1.6 0">
+  <a-camera wasd-controls-enabled="true" look-controls="true">
+    <a-cursor color="white"
+              fuse="false"
+              geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+              material="shader: flat">
+    </a-cursor>
+  </a-camera>
+</a-entity>
+
+<!-- Luces -->
+<a-entity light="type: ambient; intensity: 1"></a-entity>
+<a-entity light="type: directional; intensity: 0.6" position="2 4 2"></a-entity>
+
+</a-scene>
+
+</body>
+</html>
